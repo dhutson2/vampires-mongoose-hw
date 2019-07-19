@@ -28,9 +28,27 @@ mongoose.connection.on('error', () => {
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-
+const vampireList = require('./vampire_app/populateVampires')
 // ### Add some new vampire data
+// Vampire.create({
+//     name: 'Jeff',
+//     hair_color: 'red',
+//     eye_color: 'brown',
+//     dob: '7/2/1692',
+//     loves: ['romance novels', 'pet snakes'],
+//     location: 'London, England',
+//     gender: 'm',
+//     victims: 198
+// }
+// )
 
+Vampire.find({}, (err, vampires) =>{
+    if(err){
+        console.log(err)
+    } else{
+        console.log(vampires)
+    }
+})
 /////////////////////////////////////////////////
 // ## QUERYING
 /////////////////////////////////////////////////
