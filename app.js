@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 // 2. Require your model (and possibly your extra data source);
 const Vampire = require('./vampire_app/models/vampire')
+const vampireList = require('./vampire_app/populateVampires')
 
 // 3. Connect your database and collection name
 connectionString = 'mongodb://localhost/mongoose-vampires';
@@ -28,9 +29,12 @@ mongoose.connection.on('error', () => {
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-const vampireList = require('./vampire_app/populateVampires')
+// Vampire.collection.insertMany(vampireList,(err, data) => {
+//     console.log("added provided vampire list")
+//     mongoose.connection.close();
+//   });
 // ### Add some new vampire data
-// Vampire.create({
+// Vampire.insert({
 //     name: 'Jeff',
 //     hair_color: 'red',
 //     eye_color: 'brown',
@@ -41,18 +45,54 @@ const vampireList = require('./vampire_app/populateVampires')
 //     victims: 198
 // }
 // )
+// console.log(vampireList)
 
-Vampire.find({}, (err, vampires) =>{
+/////////////////////////////////////////////////
+// ## QUERYING
+/////////////////////////////////////////////////
+// ### Select by comparison
+// Vampire.find({gender:'f'}, (err, vampires) =>{
+//     if(err){
+//         console.log(err)
+//     } else{
+//         console.log(vampires)
+//     }
+// })
+
+// Vampire.find({victims:{$gt: 500}}, (err, vampires) =>{
+//     if(err){
+//         console.log(err)
+//     } else{
+//         console.log(vampires)
+//     }
+// })
+
+// Vampire.find({victims:{$lte: 150}}, (err, vampires) =>{
+//     if(err){
+//         console.log(err)
+//     } else{
+//         console.log(vampires)
+//     }
+// })
+
+// Vampire.find({victims:{$ne: 210234}}, (err, vampires) =>{
+//     if(err){
+//         console.log(err)
+//     } else{
+//         console.log(vampires)
+//     }
+// })
+
+Vampire.find({victims:{
+    $gt: 150,
+    $lt: 500
+}}, (err, vampires) =>{
     if(err){
         console.log(err)
     } else{
         console.log(vampires)
     }
 })
-/////////////////////////////////////////////////
-// ## QUERYING
-/////////////////////////////////////////////////
-// ### Select by comparison
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
