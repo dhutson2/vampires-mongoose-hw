@@ -260,21 +260,31 @@ mongoose.connection.on('error', () => {
 //         }
 //     })
 
-Vampire.find({
-    victims: {
-        $lte: 200
-    }
-    }, (err, vampires) => {
-        if(err){
-            console.log(err, "<--err");
-        } else {
-            console.log(vampires, "<-- vampire");
-        }
-    })
+// Vampire.find({
+//     victims: {
+//         $lte: 200
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
+
+Vampire.findOneAndUpdate(
+    { name: 'Claudia' }, // search criteria of what to update
+    { $set: { 
+        name: 'Eve',
+    } }, // how to update it
+    { new : true }, // tells findOneAndUpdate to return modified article, not the original
+    (err, vampire)=>{
+      console.log(vampire);
+    });
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
