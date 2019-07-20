@@ -232,10 +232,37 @@ mongoose.connection.on('error', () => {
 //         }
 //     })
 
+// Vampire.find({
+//     loves: {
+//         $in: ['fancy cloaks'],
+//         $nin: ['top hats', 'virgin blood']
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
+/////////////////////////////////////////////////
+//### Negative Selection
+
+// Vampire.find({
+//     loves: {
+//         $nin: ['fancy cloaks','frilly shirtsleeves', 'appearing innocent', 'being tragic', 'brooding']
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
 Vampire.find({
-    loves: {
-        $in: ['fancy cloaks'],
-        $nin: ['top hats', 'virgin blood']
+    victims: {
+        $lte: 200
     }
     }, (err, vampires) => {
         if(err){
@@ -244,9 +271,6 @@ Vampire.find({
             console.log(vampires, "<-- vampire");
         }
     })
-
-/////////////////////////////////////////////////
-//### Negative Selection
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
