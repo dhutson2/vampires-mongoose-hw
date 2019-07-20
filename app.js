@@ -128,8 +128,63 @@ mongoose.connection.on('error', () => {
 //         }
 //     })
 
+// Vampire.find({
+//     victims: {$ne: 0, $gt: 1000},
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+/////////////////////////////////////////////////
+// ### Select with OR
+// Vampire.find({
+//         location: {
+//             $in: ['New York, New York, US', 'New Orleans, Louisiana, US']
+//         }
+//         }, (err, vampires) => {
+//             if(err){
+//                 console.log(err, "<--err");
+//             } else {
+//                 console.log(vampires, "<-- vampire");
+//             }
+//         })
+
+// Vampire.find({
+//     loves: {
+//         $in: ['brooding', 'being tragic']
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
+// Vampire.find({
+//     loves: {
+//         $in: ['marshmallows']
+//     },
+//     victims:{
+//         $gt: 1000
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
 Vampire.find({
-    victims: {$ne: 0, $gt: 1000},
+    hair_color: {
+        $in: ['red']
+    },
+    eye_color:{
+        $in: ['green']
+    }
     }, (err, vampires) => {
         if(err){
             console.log(err, "<--err");
@@ -137,8 +192,6 @@ Vampire.find({
             console.log(vampires, "<-- vampire");
         }
     })
-/////////////////////////////////////////////////
-// ### Select with OR
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
