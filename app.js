@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 // 2. Require your model (and possibly your extra data source);
 const Vampire = require('./vampire_app/models/vampire')
 const vampireList = require('./vampire_app/populateVampires')
+const bodyParse = require('body-parser')
 
 // 3. Connect your database and collection name
 connectionString = 'mongodb://localhost/mongoose-vampires';
@@ -83,20 +84,59 @@ mongoose.connection.on('error', () => {
 //     }
 // })
 
-Vampire.find({victims:{
-    $gt: 150,
-    $lt: 500
-}}, (err, vampires) =>{
-    if(err){
-        console.log(err)
-    } else{
-        console.log(vampires)
-    }
-})
+// Vampire.find({victims:{
+//     $gt: 150,
+//     $lt: 500
+// }}, (err, vampires) =>{
+//     if(err){
+//         console.log(err)
+//     } else{
+//         console.log(vampires)
+//     }
+// })
 
 /////////////////////////////////////////////////
-// ### Select by exists or does not exist
+// ### Select by exists or does not exist 
+// Vampire.find({
+//     title: {$exists: true}
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
 
+// Vampire.find({
+//     title: {$exists: false}
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
+// Vampire.find({
+//     title: {$exists: true},
+//     victims: 0
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
+Vampire.find({
+    victims: {$ne: 0, $gt: 1000},
+    }, (err, vampires) => {
+        if(err){
+            console.log(err, "<--err");
+        } else {
+            console.log(vampires, "<-- vampire");
+        }
+    })
 /////////////////////////////////////////////////
 // ### Select with OR
 
