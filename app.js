@@ -276,19 +276,75 @@ mongoose.connection.on('error', () => {
 /////////////////////////////////////////////////
 // ## REPLACE
 
-Vampire.findOneAndUpdate(
-    { name: 'Claudia' }, // search criteria of what to update
-    { $set: { 
-        name: 'Eve',
-    } }, // how to update it
-    { new : true }, // tells findOneAndUpdate to return modified article, not the original
-    (err, vampire)=>{
-      console.log(vampire);
-    });
+// Vampire.findOneAndUpdate(
+//     { name: 'Claudia' }, // search criteria of what to update
+//     { $set: { 
+//         name: 'Eve',
+//     } }, // how to update it
+//     { new : true }, // tells findOneAndUpdate to return modified article, not the original
+//     (err, vampire)=>{
+//       console.log(vampire);
+//     });
+
+// Vampire.findOneAndUpdate(
+//         { gender: 'm' }, // search criteria of what to update
+//         { $set: { 
+//             name: 'Guy Man' 
+//         } }, // how to update it
+//         { new : true }, // tells findOneAndUpdate to return modified article, not the original
+//         (err, vampire)=>{
+//           console.log(vampire);
+//         });
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
+
+// Vampire.findOneAndUpdate(
+//     { name: 'Guy Man' }, // search criteria of what to update
+//     { $set: { 
+//         gender: 'f' 
+//     } }, // how to update it
+//     { new : true }, // tells findOneAndUpdate to return modified article, not the original
+//     (err, vampire)=>{
+//       console.log(vampire);
+//     });
+
+    // Vampire.findOneAndUpdate(
+    //     { name: 'Eve' }, // search criteria of what to update
+    //     { $set: { 
+    //         gender: 'm' 
+    //     } }, // how to update it
+    //     { new : true }, // tells findOneAndUpdate to return modified article, not the original
+    //     (err, vampire)=>{
+    //       console.log(vampire);
+    //     });
+
+    // Vampire.findOneAndUpdate(
+    //     { name: 'Guy Man' }, // search criteria of what to update
+    //     { $rename: { 
+    //         'loves' : 'hates'
+    //     }, $set: {
+    //         'hates.$' : ['clothes', 'jobs']
+    //     }
+    //     }, // how to update it
+    //     { new : true }, // tells findOneAndUpdate to return modified article, not the original
+    //     (err, vampire)=>{
+    //       console.log(vampire);
+    //     });
+
+        // Vampire.updateMany(
+        // { gender: 'f' }, // search criteria of what to update
+        // { $set: { 
+        //     gender: 'fems' 
+        // } }, // how to update it
+        // { new : true }, // tells findOneAndUpdate to return modified article, not the original
+        // (err, vampire)=>{
+        //   console.log(vampire);
+        // });
+
+// console.log(vampireList)
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
