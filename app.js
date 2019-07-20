@@ -178,12 +178,64 @@ mongoose.connection.on('error', () => {
 //         }
 //     })
 
+// Vampire.find({
+//     hair_color: {
+//         $in: ['red']
+//     },
+//     eye_color:{
+//         $in: ['green']
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
+/////////////////////////////////////////////////
+//### Select objects that match one of several values
+
+// Vampire.find({
+//     loves: {
+//         $in: ['frilly shirtsleeves', 'frilly collars']
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
+// Vampire.find({
+//     loves: {
+//         $in: ['brooding']
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
+// Vampire.find({
+//     loves: {
+//         $in: ['appearing innocent', 'trickery', 'lurking in rotting mansions', 'R&B music']
+//     }
+//     }, (err, vampires) => {
+//         if(err){
+//             console.log(err, "<--err");
+//         } else {
+//             console.log(vampires, "<-- vampire");
+//         }
+//     })
+
 Vampire.find({
-    hair_color: {
-        $in: ['red']
-    },
-    eye_color:{
-        $in: ['green']
+    loves: {
+        $in: ['fancy cloaks'],
+        $nin: ['top hats', 'virgin blood']
     }
     }, (err, vampires) => {
         if(err){
@@ -192,9 +244,6 @@ Vampire.find({
             console.log(vampires, "<-- vampire");
         }
     })
-
-/////////////////////////////////////////////////
-//### Select objects that match one of several values
 
 /////////////////////////////////////////////////
 //### Negative Selection
